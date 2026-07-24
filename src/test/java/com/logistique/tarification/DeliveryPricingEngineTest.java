@@ -51,4 +51,20 @@ void shouldReturn5000ForRuralZone() {
     assertEquals(5000, price);
 }
 
+//surchage de poids regle 2
+
+@Test
+void shouldAddWeightSurcharge() {
+
+    when(weatherAlertPort.hasFloodAlert(anyString()))
+            .thenReturn(false);
+
+    int price = engine.calculate(
+            Zone.URBAN,
+            8,
+            false,
+            "Dakar");
+
+    assertEquals(3500, price);
+}
 }
