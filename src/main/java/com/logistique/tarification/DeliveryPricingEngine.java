@@ -8,18 +8,22 @@ public class DeliveryPricingEngine {
         this.weatherAlertPort = weatherAlertPort;
     }
 
-   public int calculate(Zone zone,
+public int calculate(Zone zone,
                      double weight,
                      boolean premium,
                      String destination) {
-int basePrice = premium? 0 : (zone == Zone.URBAN ? 2000 : 5000);
-int surcharge = 0;
 
-if(weight>5){
-    surcharge=(int)((weight-5)*500);
-}
+    int total = premium ? 0 : (zone == Zone.URBAN ? 2000 : 5000);
 
-return basePrice+surcharge;
+    if (weight > 5) {
+        total += (int) ((weight - 5) * 500);
+    }
+
+    if (weatherAlertPort.hasFloodAlert(destination)) {
+        total += 1000;
+    }
+
+    return total;
 }
 
     
