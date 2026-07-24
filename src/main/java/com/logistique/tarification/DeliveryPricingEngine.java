@@ -12,8 +12,7 @@ public class DeliveryPricingEngine {
                      double weight,
                      boolean premium,
                      String destination) {
-int basePrice = zone == Zone.URBAN ? 2000 : 5000;
-
+int basePrice = premium? 0 : (zone == Zone.URBAN ? 2000 : 5000);
 int surcharge = 0;
 
 if(weight>5){
