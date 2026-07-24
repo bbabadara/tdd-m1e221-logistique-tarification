@@ -19,7 +19,7 @@ class DeliveryPricingEngineTest {
     void setup() {
         engine = new DeliveryPricingEngine(weatherAlertPort);
     }
-
+//test tarifzone  urbain
     @Test
     void shouldReturn2000ForUrbanZone() {
 
@@ -34,5 +34,21 @@ class DeliveryPricingEngineTest {
 
         assertEquals(2000, price);
     }
+
+// test tarif zone rural
+@Test
+void shouldReturn5000ForRuralZone() {
+
+    when(weatherAlertPort.hasFloodAlert(anyString()))
+            .thenReturn(false);
+
+    int price = engine.calculate(
+            Zone.RURAL,
+            3,
+            false,
+            "Kaolack");
+
+    assertEquals(5000, price);
+}
 
 }
