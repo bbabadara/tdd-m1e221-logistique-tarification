@@ -67,4 +67,20 @@ void shouldAddWeightSurcharge() {
 
     assertEquals(3500, price);
 }
+
+@Test
+void shouldOfferFreeBasePriceForPremium() {
+
+    when(weatherAlertPort.hasFloodAlert(anyString()))
+            .thenReturn(false);
+
+    int price = engine.calculate(
+            Zone.URBAN,
+            4,
+            true,
+            "Dakar");
+
+    assertEquals(0, price);
 }
+}
+
