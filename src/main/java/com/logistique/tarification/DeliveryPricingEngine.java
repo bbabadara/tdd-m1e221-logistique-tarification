@@ -13,7 +13,10 @@ public class DeliveryPricingEngine {
                          boolean premium,
                          String destination) {
 
-        return 0;
+          if (zone == Zone.URBAN)
+        return 2000;
+
+    return 5000;
     }
 
     
