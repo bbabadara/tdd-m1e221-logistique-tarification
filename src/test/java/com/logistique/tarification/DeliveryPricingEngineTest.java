@@ -82,5 +82,19 @@ void shouldOfferFreeBasePriceForPremium() {
 
     assertEquals(0, price);
 }
+@Test
+void shouldChargeWeightForPremiumAbove15Kg() {
+
+    when(weatherAlertPort.hasFloodAlert(anyString()))
+            .thenReturn(false);
+
+    int price = engine.calculate(
+            Zone.RURAL,
+            18,
+            true,
+            "Saint-Louis");
+
+    assertEquals(6500, price);
+}
 }
 
