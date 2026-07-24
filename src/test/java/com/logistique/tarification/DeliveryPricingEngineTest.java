@@ -93,7 +93,6 @@ void shouldChargeWeightForPremiumAbove15Kg() {
             18,
             true,
             "Saint-Louis");
-
     assertEquals(6500, price);
 }
 }
